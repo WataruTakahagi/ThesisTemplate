@@ -1,0 +1,102 @@
+%!TEX encoding = UTF-8 Unicode
+\documentclass[12pt, a4paper, twoside, openright,dvipdfmx]{report}		% For English Thesis (The words Chapter, Figure, etc. are in English.)
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{chapterbib}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage[top=2.5cm,bottom=2.0cm,left=2.5cm,right=3.0cm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{chemfig}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{amsmath}
+\usepackage{minitoc}
+\usepackage{subcaption}
+\usepackage{tocbibind}
+\usepackage{notoccite}
+\usepackage[version=4]{mhchem}
+\usepackage{booktabs}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[dvipdfmx,hidelinks]{hyperref}
+
+\let\stdsection\section
+\let\stdminitoc\minitoc
+\makeatletter
+\renewcommand\section{\clearpage\stdsection}
+\renewcommand\minitoc{\stdminitoc\vspace{1em}}
+\makeatother
+\graphicspath{{Figures/}}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Subsection}
+\setcounter{secnumdepth}{3}
+
+\begin{document}
+\pagenumbering{Roman}
+
+\begin{titlepage}
+\begin{center}
+
+\null
+\vspace{1cm}
+{\large 20XX Doctoral Dissertation}\\
+\vspace{0.5cm}
+\vspace{2cm}
+{\Huge\bf A \LaTeX{} Template for\\ Thesis\\}
+\vfill
+{\large Thesis Supervisor: Prof. XX\\}
+\vspace{2.5cm}
+Department of XX, Graduate School of Science
+
+\vspace{0.2cm}
+\today
+
+\vspace{0.5cm}
+{\Large Who Are You}
+\vspace{2.0cm}
+\end{center}
+\end{titlepage}
+
+\cleardoublepage
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\input{Chapter0_Abstract}
+\newpage
+
+\input{Chapter0_Acknowledgments}
+\newpage
+
+\input{Chapter0_Abbreviations}
+\newpage
+
+\dominitoc
+\tableofcontents
+\newpage
+\listoffigures \mtcaddchapter
+\newpage
+\listoftables \mtcaddchapter
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{chapter}{0}
+\setcounter{section}{0}
+\def\thechapter{\arabic{chapter}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\emph{\leftmark}}
+\fancyhead[RO]{\small\emph{\rightmark}}
+\fancyfoot[CE,CO]{\thepage}
+\setcounter{mtc}{5}
+
+\include{Chapter1}
+\include{Chapter2}
+
+\cleardoublepage
+\def\thechapter{}
+\def\@chapapp{}
+
+\input{Chapter0_List_of_Publications}
+
+\end{document}
